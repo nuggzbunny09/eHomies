@@ -16,11 +16,12 @@
 
     .sidebar {
       width: 250px;
-      background-color: #222831;
+      background-color: #cc4444;
       color: #ffffff;
       display: flex;
       flex-direction: column;
       padding: 20px;
+      font-family: 'Luckiest Guy', cursive;
     }
 
     .avatar {
@@ -34,6 +35,7 @@
     .username, .level {
       text-align: center;
       margin-top: 10px;
+      font-size: 1.2em;
     }
 
     .menu {
@@ -43,14 +45,15 @@
     .menu-item {
       margin: 10px 0;
       padding: 10px;
-      background-color: #393e46;
+      background-color: #a33838;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.2s;
+      text-align: center;
     }
 
     .menu-item:hover {
-      background-color: #00adb5;
+      background-color: #ff5555;
     }
 
     .content {
@@ -85,19 +88,34 @@
     <div class="level">Level: 5</div>
 
     <div class="menu">
-      <div class="menu-item">🏡 Home</div>
-      <div class="menu-item">🐾 My eHomies</div>
-      <div class="menu-item">🎮 Games</div>
-      <div class="menu-item">🛒 Shop</div>
-      <div class="menu-item">📜 Quests</div>
-      <div class="menu-item">⚙️ Settings</div>
+      <div class="menu-item" onclick="showContent('home')">🏡 Home</div>
+      <div class="menu-item" onclick="showContent('pets')">🐾 My eHomies</div>
+      <div class="menu-item" onclick="showContent('games')">🎮 Games</div>
+      <div class="menu-item" onclick="showContent('shop')">🛒 Shop</div>
+      <div class="menu-item" onclick="showContent('quests')">📜 Quests</div>
+      <div class="menu-item" onclick="showContent('settings')">⚙️ Settings</div>
     </div>
   </div>
 
-  <div class="content">
+  <div class="content" id="main-content">
     <div class="header">eHomies: Level Up Your Crew</div>
     <div class="tagline">Raise your pets to make it out the Hood.</div>
   </div>
+
+  <script>
+    function showContent(section) {
+      const content = {
+        home: `<div class='header'>eHomies: Level Up Your Crew</div><div class='tagline'>Raise your pets to make it out the Hood.</div>`,
+        pets: `<div class='header'>My eHomies</div><div class='tagline'>Check out your squad and train them up!</div>`,
+        games: `<div class='header'>Games</div><div class='tagline'>Play to earn coins and rare items!</div>`,
+        shop: `<div class='header'>Shop</div><div class='tagline'>Grab gear for your eHomies.</div>`,
+        quests: `<div class='header'>Quests</div><div class='tagline'>Help locals and earn rewards!</div>`,
+        settings: `<div class='header'>Settings</div><div class='tagline'>Manage your profile and preferences.</div>`
+      };
+
+      document.getElementById('main-content').innerHTML = content[section] || '';
+    }
+  </script>
 </body>
 </html>
 
