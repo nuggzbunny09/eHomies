@@ -3,117 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eHomies: Level Up Your Crew</title>
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <title>eHomies</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
       display: flex;
-      height: 100vh;
-      background-color: #f0f2f5;
+      background-color: #fff5f0;
     }
 
     .sidebar {
       width: 250px;
-      background-color: #cc4444;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
+      background-color: #b22222;
+      color: white;
       padding: 20px;
-      font-family: 'Luckiest Guy', cursive;
+      height: 100vh;
     }
 
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto;
+    .sidebar h2 {
+      font-size: 24px;
     }
 
-    .username, .level {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 1.2em;
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
     }
 
-    .menu {
-      margin-top: 30px;
-    }
-
-    .menu-item {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #a33838;
-      border-radius: 8px;
+    .sidebar li {
+      margin: 15px 0;
       cursor: pointer;
-      transition: background-color 0.2s;
-      text-align: center;
     }
 
-    .menu-item:hover {
-      background-color: #ff5555;
-    }
-
-    .content {
-      flex-grow: 1;
+    .main-content {
+      flex: 1;
       padding: 40px;
+      background-color: #fff5f0;
     }
 
-    .header {
+    .banner {
       background-color: #ff6666;
+      color: white;
       padding: 20px;
-      border-radius: 12px;
-      font-family: 'Luckiest Guy', cursive;
-      font-size: 2.5em;
-      color: #fff;
+      font-size: 28px;
+      font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
       text-align: center;
-      text-shadow: 2px 2px 4px #000;
-    }
-
-    .tagline {
-      font-family: 'Luckiest Guy', cursive;
-      font-size: 1.5em;
-      color: #333;
-      text-align: center;
-      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar" />
-    <div class="username">Username</div>
-    <div class="level">Level: 5</div>
-
-    <div class="menu">
-      <div class="menu-item" onclick="showContent('home')">🏡 Home</div>
-      <div class="menu-item" onclick="showContent('pets')">🐾 My eHomies</div>
-      <div class="menu-item" onclick="showContent('games')">🎮 Games</div>
-      <div class="menu-item" onclick="showContent('shop')">🛒 Shop</div>
-      <div class="menu-item" onclick="showContent('quests')">📜 Quests</div>
-      <div class="menu-item" onclick="showContent('settings')">⚙️ Settings</div>
+    <h2>User Profile</h2>
+    <p>Username: NuggzBunny</p>
+    <p>Level: 4</p>
+    <ul>
+      <li onclick="showSection('home')">🏠 Home</li>
+      <li onclick="showSection('pets')">🐾 My Pets</li>
+      <li onclick="showSection('shop')">🛒 Shop</li>
+      <li onclick="showSection('arena')">⚔️ Battle Arena</li>
+    </ul>
+  </div>
+  <div class="main-content" id="mainContent">
+    <div class="banner">
+      Raise your pets to make it out the Hood.
+    </div>
+    <div id="home" class="section">
+      <h3>Welcome to eHomies</h3>
+      <p>Level up, evolve, and ride with your crew of digital companions.</p>
     </div>
   </div>
 
-  <div class="content" id="main-content">
-    <div class="header">eHomies: Level Up Your Crew</div>
-    <div class="tagline">Raise your pets to make it out the Hood.</div>
-  </div>
-
   <script>
-    function showContent(section) {
-      const content = {
-        home: `<div class='header'>eHomies: Level Up Your Crew</div><div class='tagline'>Raise your pets to make it out the Hood.</div>`,
-        pets: `<div class='header'>My eHomies</div><div class='tagline'>Check out your squad and train them up!</div>`,
-        games: `<div class='header'>Games</div><div class='tagline'>Play to earn coins and rare items!</div>`,
-        shop: `<div class='header'>Shop</div><div class='tagline'>Grab gear for your eHomies.</div>`,
-        quests: `<div class='header'>Quests</div><div class='tagline'>Help locals and earn rewards!</div>`,
-        settings: `<div class='header'>Settings</div><div class='tagline'>Manage your profile and preferences.</div>`
-      };
-
-      document.getElementById('main-content').innerHTML = content[section] || '';
+    function showSection(sectionId) {
+      const content = document.getElementById('mainContent');
+      content.innerHTML = `
+        <div class="banner">
+          Raise your pets to make it out the Hood.
+        </div>
+        <div id="${sectionId}" class="section">
+          <h3>${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}</h3>
+          <p>Coming soon...</p>
+        </div>`;
     }
   </script>
 </body>
