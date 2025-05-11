@@ -4,89 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>eHomies</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
-      display: flex;
-      background-color: #fff5f0;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #b22222;
-      color: white;
-      padding: 20px;
-      height: 100vh;
-    }
-
-    .sidebar h2 {
-      font-size: 24px;
-    }
-
-    .sidebar ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .sidebar li {
-      margin: 15px 0;
-      cursor: pointer;
-    }
-
-    .main-content {
-      flex: 1;
-      padding: 40px;
-      background-color: #fff5f0;
-    }
-
-    .banner {
-      background-color: #ff6666;
-      color: white;
-      padding: 20px;
-      font-size: 28px;
-      font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="sidebar">
-    <h2>User Profile</h2>
-    <p>Username: NuggzBunny</p>
-    <p>Level: 4</p>
-    <ul>
-      <li onclick="showSection('home')">🏠 Home</li>
-      <li onclick="showSection('pets')">🐾 My Pets</li>
-      <li onclick="showSection('shop')">🛒 Shop</li>
-      <li onclick="showSection('arena')">⚔️ Battle Arena</li>
-    </ul>
-  </div>
-  <div class="main-content" id="mainContent">
-    <div class="banner">
-      Raise your pets to make it out the Hood.
-    </div>
-    <div id="home" class="section">
-      <h3>Welcome to eHomies</h3>
-      <p>Level up, evolve, and ride with your crew of digital companions.</p>
-    </div>
+<body class="bg-[#FFF5F0] text-gray-800 font-sans">
+
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-red-300 text-white p-6">
+      <div class="mb-8">
+        <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md" />
+        <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
+        <p class="text-center text-sm">Level 12</p>
+      </div>
+
+      <nav class="space-y-3">
+        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🏠 Home</button>
+        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🐾 Pets</button>
+        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🎒 Inventory</button>
+        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🏆 Achievements</button>
+        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">⚙️ Settings</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+      <header class="mb-6">
+        <h1 class="text-4xl font-extrabold text-red-600 drop-shadow-md" style="font-family: 'Comic Sans MS', cursive, sans-serif;">
+          Raise Your Pets to Make It Out the Hood
+        </h1>
+        <p class="mt-2 text-lg text-gray-700">Collect, grow, and level up your eHomies. Survival starts with friendship. 🐾</p>
+      </header>
+
+      <section class="mt-6">
+        <p class="text-lg">
+          Start building your crew today — earn respect, collect homies, and rise through the ranks of digital hood fame.
+        </p>
+      </section>
+    </main>
+
   </div>
 
-  <script>
-    function showSection(sectionId) {
-      const content = document.getElementById('mainContent');
-      content.innerHTML = `
-        <div class="banner">
-          Raise your pets to make it out the Hood.
-        </div>
-        <div id="${sectionId}" class="section">
-          <h3>${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}</h3>
-          <p>Coming soon...</p>
-        </div>`;
-    }
-  </script>
 </body>
 </html>
+
 
