@@ -1,67 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eHomies - Virtual Pet World</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eHomies Dashboard</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fefae0;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #f0f2f5;
     }
-    header {
-      background-color: #457b9d;
-      color: white;
-      padding: 1rem;
+
+    .sidebar {
+      width: 250px;
+      background-color: #222831;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+
+    .username, .level {
       text-align: center;
+      margin-top: 10px;
     }
-    main {
-      padding: 2rem;
+
+    .menu {
+      margin-top: 30px;
     }
-    .pet-card {
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background-color: #fff;
-    }
-    .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #2a9d8f;
-      color: white;
+
+    .menu-item {
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #393e46;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.2s;
     }
-    .btn:hover {
-      background-color: #21867a;
+
+    .menu-item:hover {
+      background-color: #00adb5;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 40px;
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="sidebar">
+    <img src="https://via.placeholder.com/100" alt="User Avatar" class="avatar" />
+    <div class="username">Username</div>
+    <div class="level">Level: 5</div>
+
+    <div class="menu">
+      <div class="menu-item">🏡 Home</div>
+      <div class="menu-item">🐾 My eHomies</div>
+      <div class="menu-item">🎮 Games</div>
+      <div class="menu-item">🛒 Shop</div>
+      <div class="menu-item">📜 Quests</div>
+      <div class="menu-item">⚙️ Settings</div>
+    </div>
+  </div>
+
+  <div class="content">
     <h1>Welcome to eHomies!</h1>
-    <p>Adopt, train, and level up your digital pets.</p>
-  </header>
-
-  <main>
-    <section class="pet-card">
-      <h2>Your Pet: Pixel</h2>
-      <p>Level: <span id="pet-level">1</span></p>
-      <button class="btn" onclick="levelUp()">Train</button>
-    </section>
-  </main>
-
-  <script>
-    let level = 1;
-
-    function levelUp() {
-      level++;
-      document.getElementById("pet-level").innerText = level;
-    }
-  </script>
+    <p>Here you can collect, raise, and level up your digital pets.</p>
+  </div>
 </body>
 </html>
+
