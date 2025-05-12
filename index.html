@@ -21,13 +21,14 @@
       <nav class="space-y-3">
         <button onclick="loadContent('block')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🏠 The Block</button>
         <button onclick="loadContent('recruit')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🎯 Recruit a Homie</button>
-        <button onclick="loadContent('save')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">❤️ Save a Homie</button>
-        <button onclick="loadContent('kick')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🚪 Kick 'Em Out</button>
+        <button onclick="loadContent('adopt')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">❤️ Save a Homie</button>
+        <button onclick="loadContent('abandon')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🚪 Kick 'Em Out</button>
       </nav>
     </aside>
 
     <!-- Main Content -->
     <main id="main-content" class="flex-1 p-10">
+      <!-- Default content -->
       <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
         Raise Your Pets to Make It Out the Hood
       </h1>
@@ -44,67 +45,64 @@
       switch (section) {
         case 'block':
           html = `
-            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
-              Raise Your Pets to Make It Out the Hood
+            <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
+              Yo Homies
             </h1>
-            <p class="text-lg text-gray-700">Welcome to eHomies. Here, you level up your street-savvy squad, build respect, and become a legend in your digital hood.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+                <div class="text-5xl mb-4">🎯</div>
+                <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
+                <p class="text-gray-700 mb-4">Pick your starter from the realest lineup. Choose wisely.</p>
+                <a href="#" onclick="loadContent('recruit')" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+              </div>
+              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+                <div class="text-5xl mb-4">❤️</div>
+                <h2 class="text-2xl font-bold text-red-600 mb-2">Save a Homie</h2>
+                <p class="text-gray-700 mb-4">These homies need love. Give them a second shot at glory.</p>
+                <a href="#" onclick="loadContent('adopt')" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+              </div>
+              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+                <div class="text-5xl mb-4">🚪</div>
+                <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
+                <p class="text-gray-700 mb-4">Let go of those who ain't cuttin' it. Clean up your squad.</p>
+                <a href="#" onclick="loadContent('abandon')" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+              </div>
+            </div>
           `;
           break;
 
         case 'recruit':
-         <script>
-  function loadContent(section) {
-    const content = document.getElementById('main-content');
-    let html = '';
-
-    switch (section) {
-      case 'block':
-        html = `
-          <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
-            Yo Homies
-          </h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="text-5xl mb-4">🎯</div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
-              <p class="text-gray-700 mb-4">Pick your starter from the realest lineup. Choose wisely.</p>
-              <a href="recruit.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
-            </div>
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="text-5xl mb-4">❤️</div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Save a Homie</h2>
-              <p class="text-gray-700 mb-4">These homies need love. Give them a second shot at glory.</p>
-              <a href="adopt.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
-            </div>
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="text-5xl mb-4">🚪</div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
-              <p class="text-gray-700 mb-4">Let go of those who ain't cuttin' it. Clean up your squad.</p>
-              <a href="abandon.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
-            </div>
-          </div>
-        `;
-        break;
-
-      case 'recruit':
-        // ... your other existing cases here
-
-
-        case 'save':
           html = `
-            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
-              ❤️ Save a Homie
+            <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
+              🎯 Recruit a Homie
             </h1>
-            <p class="text-lg text-gray-700">These homies been through it and need a new shot. Show some love, give 'em a home, and they'll hold you down for life.</p>
+            <p class="text-lg text-gray-700 mb-4">Pick your first eHomie from a lineup of real ones. No randoms here—choose wisely and train 'em right.</p>
+            <div class="flex space-x-4 mb-6">
+              <button onclick="loadContent('adopt')" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">❤️ Save a Homie</button>
+              <button onclick="loadContent('recruit')" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">🎯 Recruit a Homie</button>
+              <button onclick="loadContent('abandon')" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">🚪 Abandon a Homie</button>
+            </div>
+            <p class="text-gray-600">[Insert your recruit selection UI here]</p>
           `;
           break;
 
-        case 'kick':
+        case 'adopt':
           html = `
-            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
+            <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
+              ❤️ Save a Homie
+            </h1>
+            <p class="text-lg text-gray-700 mb-4">These homies been through it and need a new shot. Show some love, give 'em a home, and they'll hold you down for life.</p>
+            <p class="text-gray-600">[Insert adopt interface here]</p>
+          `;
+          break;
+
+        case 'abandon':
+          html = `
+            <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
               🚪 Kick 'Em Out
             </h1>
-            <p class="text-lg text-gray-700">Not every eHomie makes the cut. If it’s time to part ways, let 'em go with style. But don’t say we didn’t warn ya.</p>
+            <p class="text-lg text-gray-700 mb-4">Not every eHomie makes the cut. If it’s time to part ways, let 'em go with style. But don’t say we didn’t warn ya.</p>
+            <p class="text-gray-600">[Insert abandon interface here]</p>
           `;
           break;
       }
@@ -115,3 +113,4 @@
 
 </body>
 </html>
+
