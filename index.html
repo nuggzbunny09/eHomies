@@ -20,9 +20,10 @@
 
       <nav class="space-y-3">
         <button onclick="loadContent('block')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🏠 The Block</button>
-        <button onclick="loadContent('recruit')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🎯 Recruit a Homie</button>
-        <button onclick="loadContent('adopt')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">❤️ Save a Homie</button>
-        <button onclick="loadContent('abandon')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">🚪 Kick 'Em Out</button>
+        <button onclick="loadContent('homies')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">👥 Your Homies</button>
+        <button onclick="loadContent('stash')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">💼 Stash Spot</button>
+        <button onclick="loadContent('cred')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">📈 Street Cred</button>
+        <button onclick="loadContent('settings')" class="w-full bg-red-500 hover:bg-red-600 py-2 px-4 rounded-xl text-white">⚙️ Settings</button>
       </nav>
     </aside>
 
@@ -30,9 +31,9 @@
     <main id="main-content" class="flex-1 p-10">
       <!-- Default content -->
       <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
-        Raise Your Pets to Make It Out the Hood
+        Welcome to eHomies
       </h1>
-      <p class="text-lg text-gray-700">Welcome to eHomies. Here, you level up your street-savvy squad, build respect, and become a legend in your digital hood.</p>
+      <p class="text-lg text-gray-700">Build your crew, stack respect, and rise to digital legend status.</p>
     </main>
 
   </div>
@@ -44,6 +45,15 @@
 
       switch (section) {
         case 'block':
+          html = `
+            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
+              Welcome to The Block
+            </h1>
+            <p class="text-lg text-gray-700">This is your hub — news, events, daily goals, and more coming soon.</p>
+          `;
+          break;
+
+        case 'homies':
           html = `
             <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
               Yo Homies
@@ -105,6 +115,33 @@
             <p class="text-gray-600">[Insert abandon interface here]</p>
           `;
           break;
+
+        case 'stash':
+          html = `
+            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
+              💼 Stash Spot
+            </h1>
+            <p class="text-lg text-gray-700">Store your gear, goodies, and street treasures here. Inventory system coming soon.</p>
+          `;
+          break;
+
+        case 'cred':
+          html = `
+            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
+              📈 Street Cred
+            </h1>
+            <p class="text-lg text-gray-700">Track your rep, badges, and homie milestones. More stats dropping soon.</p>
+          `;
+          break;
+
+        case 'settings':
+          html = `
+            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
+              ⚙️ Settings
+            </h1>
+            <p class="text-lg text-gray-700">Adjust your account, theme, and game preferences here.</p>
+          `;
+          break;
       }
 
       content.innerHTML = html;
@@ -113,4 +150,3 @@
 
 </body>
 </html>
-
