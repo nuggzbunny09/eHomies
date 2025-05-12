@@ -19,8 +19,8 @@
       </div>
 
       <nav class="space-y-3">
-        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🏠 The Block</button>
-        <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🐾 Yo Homies</button>
+        <a href="index.html" class="w-full block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl text-center">🏠 The Block</a>
+        <a href="pets.html" class="w-full block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl text-center">🐾 Yo Homies</a>
         <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🎒 Stash Spot</button>
         <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">🏆 Street Cred</button>
         <button class="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl transition">⚙️ Hustle Settings</button>
@@ -29,23 +29,44 @@
 
     <!-- Main Content -->
     <main class="flex-1 p-10">
-      <header class="mb-6">
-        <h1 class="text-4xl font-extrabold text-red-600 drop-shadow-md" style="font-family: 'Comic Sans MS', cursive, sans-serif;">
-          Raise Ya Homies & Make It Out the Hood
+      <!-- Welcome Header -->
+      <header class="mb-10">
+        <h1 class="text-5xl font-extrabold text-red-600 drop-shadow-md" style="font-family: 'Comic Sans MS', cursive, sans-serif;">
+          Raise Your Pets to Make it Out the Hood
         </h1>
-        <p class="mt-2 text-lg text-gray-700">From the sidewalk to the skyline — build your crew, stack your levels, and rep hard. 🏚️➡️🏙️</p>
+        <p class="mt-3 text-lg text-gray-700">Build your crew, rep your block, and ride or die with your eHomies. 💯</p>
       </header>
 
-      <section class="mt-6">
-        <p class="text-lg">
-          Get your squad up, flex your digital pets, and prove you run this block. No cap, it's all about loyalty, grind, and glow-ups.
-        </p>
-      </section>
-    </main>
+      <!-- Yo Homies Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-red-600 mb-6">🐾 Yo Homies</h2>
 
+        <div class="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          <!-- Recruit a Homie -->
+          <div class="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition">
+            <h3 class="text-2xl font-bold text-red-600 mb-2">🎯 Recruit a Homie</h3>
+            <p class="mb-4 text-gray-700">Scope out a base roster of day-one ride-or-dies and pick your starter from the block.</p>
+            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl">Check the Lineup</button>
+          </div>
+
+          <!-- Save a Homie -->
+          <div class="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition">
+            <h3 class="text-2xl font-bold text-red-600 mb-2">❤️ Save a Homie</h3>
+            <p class="mb-4 text-gray-700">Check the local pound for homies who been through it. Bring one back from the struggle.</p>
+            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl">Adopt</button>
+          </div>
+
+          <!-- Kick 'Em Out -->
+          <div class="bg-white shadow-xl rounded-2xl p-6 hover:shadow-2xl transition">
+            <h3 class="text-2xl font-bold text-red-600 mb-2">🚪 Kick 'Em Out</h3>
+            <p class="mb-4 text-gray-700">Sometimes a homie ain’t cuttin’ it. Let 'em go and make room for new real ones.</p>
+            <button class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-xl">Drop 'Em</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
   </div>
 
 </body>
 </html>
-
-
