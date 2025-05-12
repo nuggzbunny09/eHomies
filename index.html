@@ -52,13 +52,43 @@
           break;
 
         case 'recruit':
-          html = `
-            <h1 class="text-4xl font-extrabold text-red-600 mb-4" style="font-family: 'Comic Sans MS', cursive;">
-              🎯 Recruit a Homie
-            </h1>
-            <p class="text-lg text-gray-700">Pick your first eHomie from a lineup of real ones. No randoms here—choose wisely and train 'em right.</p>
-          `;
-          break;
+         <script>
+  function loadContent(section) {
+    const content = document.getElementById('main-content');
+    let html = '';
+
+    switch (section) {
+      case 'block':
+        html = `
+          <h1 class="text-4xl font-extrabold text-red-600 mb-6" style="font-family: 'Comic Sans MS', cursive;">
+            Yo Homies
+          </h1>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="text-5xl mb-4">🎯</div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
+              <p class="text-gray-700 mb-4">Pick your starter from the realest lineup. Choose wisely.</p>
+              <a href="recruit.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+            </div>
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="text-5xl mb-4">❤️</div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Save a Homie</h2>
+              <p class="text-gray-700 mb-4">These homies need love. Give them a second shot at glory.</p>
+              <a href="adopt.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+            </div>
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="text-5xl mb-4">🚪</div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
+              <p class="text-gray-700 mb-4">Let go of those who ain't cuttin' it. Clean up your squad.</p>
+              <a href="abandon.html" class="inline-block bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-xl">Go</a>
+            </div>
+          </div>
+        `;
+        break;
+
+      case 'recruit':
+        // ... your other existing cases here
+
 
         case 'save':
           html = `
