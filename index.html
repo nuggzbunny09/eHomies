@@ -63,116 +63,115 @@
 
   </div>
 
-  <script>
-  // Automatically load a view if passed via ?view= parameter
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const view = params.get('view');
-    if (view) {
-      loadContent(view);
-    }
-  });
-
+<script>
   function loadContent(section) {
     const content = document.getElementById('main-content');
     let html = '';
 
-      switch (section) {
-        case 'block':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-4 main-title">Welcome to The Block</h1>
-            <p class="text-lg text-gray-700">This is your hub — news, events, daily goals, and more coming soon.</p>
-          `;
-          break;
+    switch (section) {
+      case 'block':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-4 main-title">Welcome to The Block</h1>
+          <p class="text-lg text-gray-700">This is your hub — news, events, daily goals, and more coming soon.</p>
+        `;
+        break;
 
-        case 'homies':
-          html = `
-            <h1 class="graffiti-title text-7xl text-red-600 mb-6">Your Homies</h1>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-                <div class="mb-4">
-                  <img src="images/RecruitAHomie.jpeg" alt="Recruit a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
-                </div>
-                <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
-                <p class="text-gray-700 mb-4">Recruit a new Homie to join your squad. Choose from the base set of Homies here.</p>
-                <a href="recruiting.html" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit Recruiting Agency</a>
+      case 'homies':
+        html = `
+          <h1 class="graffiti-title text-9xl text-red-600 font-bold mb-6">Your Homies</h1>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="mb-4">
+                <img src="images/RecruitAHomie.jpeg" alt="Recruit a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
               </div>
-
-              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-                <div class="mb-4">
-                  <img src="images/SaveAHomie.jpeg" alt="Save a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
-                </div>
-                <h2 class="text-2xl font-bold text-red-600 mb-2">Bail Out a Homie</h2>
-                <p class="text-gray-700 mb-4">Bail out a Homie that was picked up off the streets, committing crimes to survive.</p>
-                <a href="#" onclick="loadContent('adopt')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit the Jail</a>
-              </div>
-
-              <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-                <div class="mb-4">
-                  <img src="images/AbandonAHomie.jpeg" alt="Abandon a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
-                </div>
-                <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
-                <p class="text-gray-700 mb-4">Let go of your Homies who ain't cuttin' it. See if they can fend for themselves out on the streets.</p>
-                <a href="#" onclick="loadContent('abandon')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Take a Drive</a>
-              </div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
+              <p class="text-gray-700 mb-4">Recruit a new Homie to join your squad. Choose from the base set of Homies here.</p>
+              <a href="recruiting.html" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit Recruiting Agency</a>
             </div>
-          `;
-          break;
 
-        case 'recruit':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-6 main-title">🎯 Recruit a Homie</h1>
-            <p class="text-lg text-gray-700 mb-4">Pick your first eHomie from a lineup of real ones. No randoms here—choose wisely and train 'em right.</p>
-            <div class="flex space-x-4 mb-6">
-              <button onclick="loadContent('adopt')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">❤️ Save a Homie</button>
-              <button onclick="loadContent('recruit')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🎯 Recruit a Homie</button>
-              <button onclick="loadContent('abandon')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🚪 Abandon a Homie</button>
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="mb-4">
+                <img src="images/SaveAHomie.jpeg" alt="Save a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
+              </div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Bail Out a Homie</h2>
+              <p class="text-gray-700 mb-4">Bail out a Homie that was picked up off the streets, committing crimes to survive.</p>
+              <a href="#" onclick="loadContent('adopt')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit the Jail</a>
             </div>
-            <p class="text-gray-600">[Insert your recruit selection UI here]</p>
-          `;
-          break;
 
-        case 'adopt':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-6 main-title">❤️ Save a Homie</h1>
-            <p class="text-lg text-gray-700 mb-4">These homies been through it and need a new shot. Show some love, give 'em a home, and they'll hold you down for life.</p>
-            <p class="text-gray-600">[Insert adopt interface here]</p>
-          `;
-          break;
+            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+              <div class="mb-4">
+                <img src="images/AbandonAHomie.jpeg" alt="Abandon a Homie Icon" class="w-20 h-20 mx-auto rounded-md" />
+              </div>
+              <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
+              <p class="text-gray-700 mb-4">Let go of your Homies who ain't cuttin' it. See if they can fend for themselves out on the streets.</p>
+              <a href="#" onclick="loadContent('abandon')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Take a Drive</a>
+            </div>
+          </div>
+        `;
+        break;
 
-        case 'abandon':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-6 main-title">🚪 Kick 'Em Out</h1>
-            <p class="text-lg text-gray-700 mb-4">Not every eHomie makes the cut. If it’s time to part ways, let 'em go with style. But don’t say we didn’t warn ya.</p>
-            <p class="text-gray-600">[Insert abandon interface here]</p>
-          `;
-          break;
+      case 'recruit':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-6 main-title">🎯 Recruit a Homie</h1>
+          <p class="text-lg text-gray-700 mb-4">Pick your first eHomie from a lineup of real ones. No randoms here—choose wisely and train 'em right.</p>
+          <div class="flex space-x-4 mb-6">
+            <button onclick="loadContent('adopt')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">❤️ Save a Homie</button>
+            <button onclick="loadContent('recruit')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🎯 Recruit a Homie</button>
+            <button onclick="loadContent('abandon')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🚪 Abandon a Homie</button>
+          </div>
+          <p class="text-gray-600">[Insert your recruit selection UI here]</p>
+        `;
+        break;
 
-        case 'stash':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-4 main-title">💼 Stash Spot</h1>
-            <p class="text-lg text-gray-700">Store your gear, goodies, and street treasures here. Inventory system coming soon.</p>
-          `;
-          break;
+      case 'adopt':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-6 main-title">❤️ Save a Homie</h1>
+          <p class="text-lg text-gray-700 mb-4">These homies been through it and need a new shot. Show some love, give 'em a home, and they'll hold you down for life.</p>
+          <p class="text-gray-600">[Insert adopt interface here]</p>
+        `;
+        break;
 
-        case 'cred':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-4 main-title">📈 Street Cred</h1>
-            <p class="text-lg text-gray-700">Track your rep, badges, and homie milestones. More stats dropping soon.</p>
-          `;
-          break;
+      case 'abandon':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-6 main-title">🚪 Kick 'Em Out</h1>
+          <p class="text-lg text-gray-700 mb-4">Not every eHomie makes the cut. If it’s time to part ways, let 'em go with style. But don’t say we didn’t warn ya.</p>
+          <p class="text-gray-600">[Insert abandon interface here]</p>
+        `;
+        break;
 
-        case 'settings':
-          html = `
-            <h1 class="text-5xl text-red-800 mb-4 main-title">⚙️ Settings</h1>
-            <p class="text-lg text-gray-700">Adjust your account, theme, and game preferences here.</p>
-          `;
-          break;
-      }
+      case 'stash':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-4 main-title">💼 Stash Spot</h1>
+          <p class="text-lg text-gray-700">Store your gear, goodies, and street treasures here. Inventory system coming soon.</p>
+        `;
+        break;
 
-      content.innerHTML = html;
+      case 'cred':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-4 main-title">📈 Street Cred</h1>
+          <p class="text-lg text-gray-700">Track your rep, badges, and homie milestones. More stats dropping soon.</p>
+        `;
+        break;
+
+      case 'settings':
+        html = `
+          <h1 class="text-5xl text-red-800 mb-4 main-title">⚙️ Settings</h1>
+          <p class="text-lg text-gray-700">Adjust your account, theme, and game preferences here.</p>
+        `;
+        break;
     }
-  </script>
+
+    content.innerHTML = html;
+  }
+
+  // ✅ Load the appropriate section on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get('section') || 'block'; // default is 'block'
+    loadContent(section);
+  });
+</script>
+
 
 </body>
 </html>
