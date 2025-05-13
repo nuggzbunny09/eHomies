@@ -8,9 +8,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    .graffiti-title {
-  font-family: 'Rubik Spray Paint', cursive;
-    }
+     @font-face {
+    font-family: 'Street Soul';
+    src: url('./fonts/street soul.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .graffiti-title {
+    font-family: 'Street Soul', cursive;
+  }
 
     .main-title {
       font-family: 'Comic Sans MS', cursive;
@@ -46,7 +53,7 @@
 
     <!-- Main Content -->
     <main class="flex-1 p-10">
-      <h1 class="graffiti-title text-5xl text-red-800 mb-4">Recruiting Agency</h1>
+      <h1 class="graffiti-title text-4xl">Recruiting Agency</h1>
       <p class="text-lg text-gray-700 mb-8">These are the base set of Homies available to any new user. Pick one to join your crew.</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
