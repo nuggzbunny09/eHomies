@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eHomies - Recruiting Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .main-title {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 #333;
+    }
+
+    .bubbly {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: bold;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#EADACD] text-gray-800 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-red-800 text-white p-6">
+      <div class="mb-8">
+        <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md" />
+        <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
+        <p class="text-center text-sm">Level 12</p>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="index.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">🏠 The Block</a>
+        <a href="recruiting.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">👥 Recruiting Agency</a>
+        <button class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">💼 Stash Spot</button>
+        <button class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">📈 Street Cred</button>
+        <button class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">⚙️ Settings</button>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+      <h1 class="text-5xl text-red-800 mb-4 main-title">Recruiting Agency</h1>
+      <p class="text-lg text-gray-700 mb-8">These are the base set of Homies available to any new user. Pick one to join your crew.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <!-- Repeat this block for each homie -->
+        <div class="bg-white rounded-2xl shadow-md p-4 text-center">
+          <img src="images/homie1.jpeg" alt="Homie 1" class="w-24 h-24 mx-auto mb-4 rounded-md" />
+          <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Recruit</button>
+        </div>
+
+        <!-- Copy the block above 9 more times, changing the image src as needed (homie2.jpeg, homie3.jpeg, etc.) -->
+        <!-- Repeat blocks for all 10 Homies -->
+        <!-- Placeholder examples -->
+        <div class="bg-white rounded-2xl shadow-md p-4 text-center">
+          <img src="images/homie2.jpeg" alt="Homie 2" class="w-24 h-24 mx-auto mb-4 rounded-md" />
+          <button class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Recruit</button>
+        </div>
+        <!-- Continue up to homie10.jpeg -->
+      </div>
+    </main>
+  </div>
+</body>
+</html>
