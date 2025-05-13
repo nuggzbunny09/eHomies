@@ -53,9 +53,18 @@
   </div>
 
   <script>
-    function loadContent(section) {
-      const content = document.getElementById('main-content');
-      let html = '';
+  // Automatically load a view if passed via ?view= parameter
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view');
+    if (view) {
+      loadContent(view);
+    }
+  });
+
+  function loadContent(section) {
+    const content = document.getElementById('main-content');
+    let html = '';
 
       switch (section) {
         case 'block':
