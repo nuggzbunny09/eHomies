@@ -85,6 +85,9 @@
   <script>
     function loadContent(section) {
       const content = document.getElementById('main-content');
+      while (content.firstChild) {
+    content.removeChild(content.firstChild);
+  }
       let html = '';
 
       switch (section) {
