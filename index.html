@@ -7,6 +7,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
+    #main-content {
+  position: relative;
+  isolation: isolate; /* forces a new stacking context */
+  background-color: #EADACD; /* match body bg */
+}
     #main-content > * {
     position: relative;
     z-index: 10;
