@@ -167,10 +167,10 @@
 
   // ✅ Load the appropriate section on page load
   window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const section = params.get('section') || 'block'; // default is 'block'
-    loadContent(section);
-  });
+  const params = new URLSearchParams(window.location.search);
+  const section = params.get('section') || sessionStorage.getItem('lastSection') || 'block';
+  loadContent(section);
+});
 </script>
 
 
