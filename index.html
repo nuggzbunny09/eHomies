@@ -183,7 +183,10 @@
           break;
       }
 
-      content.innerHTML = html;
+      // Force a deep DOM reset
+content.innerHTML = ''; // Clear content
+void content.offsetHeight; // Trigger reflow to force visual reset
+content.innerHTML = html; // Inject new content
       sessionStorage.setItem('lastSection', section);
     }
 
