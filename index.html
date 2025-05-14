@@ -64,9 +64,16 @@
   </div>
 
 <script>
-  function loadContent(section) {
-    const content = document.getElementById('main-content');
-    let html = '';
+  const content = document.getElementById('main-content');
+
+  // Clear the content area entirely and reset scroll
+  content.innerHTML = '';
+  content.scrollTop = 0;
+
+  // Reset styles (optional: helps clean up lingering Tailwind overrides)
+  content.className = 'flex-1 p-10';
+  localStorage.setItem('currentSection', section);
+  let html = '';
 
     switch (section) {
       case 'block':
@@ -160,10 +167,12 @@
         `;
         break;
     }
-
-    content.innerHTML = html;
-    sessionStorage.setItem('lastSection', section);
+  default:
+      html = `<p>Page not found.</p>`;
   }
+
+    content.insertAdjacentHTML('beforeend', html);
+}
 
   // ✅ Load the appropriate section on page load
   window.addEventListener('DOMContentLoaded', () => {
