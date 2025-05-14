@@ -64,21 +64,26 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="w-64 bg-red-800 text-white p-6 flex-shrink-0">
-      <div class="mb-8">
-        <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
-        <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
-        <p class="text-center text-sm">Level 12</p>
-      </div>
+<aside class="w-64 bg-red-800 text-white p-6">
+  <div class="mb-8">
+    <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md" />
+    <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
+    <p class="text-center text-sm">Level 12</p>
+  </div>
 
-      <nav class="space-y-3">
-        <button onclick="loadContent('block')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">🏠 The Block</button>
-        <button onclick="loadContent('homies')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">👥 Your Homies</button>
-        <button onclick="loadContent('stash')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">💼 Stash Spot</button>
-        <button onclick="loadContent('cred')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">📈 Street Cred</button>
-        <button onclick="loadContent('settings')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">⚙️ Settings</button>
-      </nav>
-    </aside>
+  <nav class="space-y-3">
+    <a href="index.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">🏠 The Block</a>
+    
+    <a href="index.html?section=homies" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">👥 Your Homies</a>
+    
+    <a href="index.html?section=stash" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">💼 Stash Spot</a>
+    
+    <a href="index.html?section=cred" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">📈 Street Cred</a>
+    
+    <a href="index.html?section=settings" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">⚙️ Settings</a>
+  </nav>
+</aside>
+
 
     <!-- Main Content -->
     <main id="main-content" class="flex-1 p-10 overflow-hidden min-h-screen relative z-10">
