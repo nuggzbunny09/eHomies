@@ -199,20 +199,20 @@
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const sectionFromURL = params.get('section');
-  const sectionFromStorage = localStorage.getItem('lastSection');
+  const lastSection = localStorage.getItem('lastSection');
 
-  let section;
+  let sectionToLoad = 'block'; // default fallback
 
-  // 🔁 Use the URL section if it exists — override storage
   if (sectionFromURL) {
-    section = sectionFromURL;
-    localStorage.setItem('lastSection', sectionFromURL); // update saved value
-  } else {
-    section = sectionFromStorage || 'block';
+    sectionToLoad = sectionFromURL;
+    localStorage.setItem('lastSection', sectionFromURL); // update saved
+  } else if (lastSection) {
+    sectionToLoad = lastSection;
   }
 
-  loadContent(section);
+  loadContent(sectionToLoad);
 });
+
 
 </script>
 
