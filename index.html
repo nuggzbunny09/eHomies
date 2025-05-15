@@ -195,14 +195,24 @@
     content.innerHTML = html;
   }
 
-  // On page load
-  window.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
-    const sectionFromURL = params.get('section');
-    const sectionFromStorage = localStorage.getItem('lastSection');
-    const section = sectionFromURL || sectionFromStorage || 'block';
-    loadContent(section);
-  });
+// On page load
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const sectionFromURL = params.get('section');
+  const sectionFromStorage = localStorage.getItem('lastSection');
+
+  let section;
+
+  // Only use the URL section if no stored section exists yet
+  if (!sectionFromStorage && sectionFromURL) {
+    section = sectionFromURL;
+  } else {
+    section = sectionFromStorage || 'block';
+  }
+
+  loadContent(section);
+});
+
 </script>
 
 </body>
