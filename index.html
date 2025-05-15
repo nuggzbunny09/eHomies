@@ -3,218 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>eHomies - The Block</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <title>The Block | eHomies</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <style>
-    #main-content {
-  position: relative;
-  isolation: isolate; /* forces a new stacking context */
-  background-color: #EADACD; /* match body bg */
-}
-    #main-content > * {
-    position: relative;
-    z-index: 10;
-  }
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-  #main-content h1 {
-    margin: 0;
-    line-height: 1.2;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    z-index: 10;
-  }
-
-  .graffiti-title {
-    display: inline-block;
-    max-width: 100%;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    position: relative;
-    z-index: 10;
-  }
-    @font-face {
-      font-family: 'Street Soul';
-      src: url('./fonts/street soul.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    .graffiti-title {
-      font-family: 'Street Soul', cursive;
-      word-break: break-word;
-      overflow-wrap: break-word;
-    }
-
-    .main-title {
-      font-family: 'Comic Sans MS', cursive;
-      font-weight: 900;
-      text-shadow: 2px 2px 0 #333;
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      background-color: #f3f4f6;
     }
 
     .bubbly {
-      font-family: 'Comic Sans MS', cursive;
+      border-radius: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    .bubbly:hover {
+      transform: scale(1.05);
+    }
+
+    .graffiti-title {
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .main-title {
+      font-size: 3rem;
       font-weight: bold;
-      border-radius: 9999px;
     }
   </style>
 </head>
-<body class="bg-[#EADACD] text-gray-800 font-sans overflow-x-hidden">
+<body class="flex h-screen">
 
-  <div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-red-800 text-white p-6">
+    <div class="mb-8">
+      <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md" />
+      <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
+      <p class="text-center text-sm">Level 12</p>
+    </div>
 
-    <!-- Sidebar -->
-    <aside class="w-64 bg-red-800 text-white p-6 flex-shrink-0">
-      <div class="mb-8">
-        <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
-        <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
-        <p class="text-center text-sm">Level 12</p>
+    <nav class="space-y-3">
+      <a href="index.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">🏠 The Block</a>
+      <a href="homies.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">👥 Your Homies</a>
+      <a href="stash.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">💼 Stash Spot</a>
+      <a href="cred.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">📈 Street Cred</a>
+      <a href="settings.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">⚙️ Settings</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-10 overflow-y-auto">
+    <h1 class="graffiti-title text-6xl md:text-7xl text-red-600 font-bold mb-6">Welcome to The Block</h1>
+    <p class="text-lg text-gray-700 mb-8">This is your hub — news, events, daily goals, and more coming soon.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Example: Feature Cards -->
+      <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+        <div class="mb-4">
+          <img src="images/RecruitAHomie.jpeg" alt="Recruit a Homie" class="w-20 h-20 mx-auto rounded-md" />
+        </div>
+        <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
+        <p class="text-gray-700 mb-4">Choose your ride-or-die from the block. They're waiting.</p>
+        <a href="recruiting.html" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit Recruiting Agency</a>
       </div>
 
-      <nav class="space-y-3">
-        <button onclick="loadContent('block')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">🏠 The Block</button>
-        <button onclick="loadContent('homies')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">👥 Your Homies</button>
-        <button onclick="loadContent('stash')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">💼 Stash Spot</button>
-        <button onclick="loadContent('cred')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">📈 Street Cred</button>
-        <button onclick="loadContent('settings')" class="w-full bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white">⚙️ Settings</button>
-      </nav>
-    </aside>
+      <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
+        <div class="mb-4">
+          <img src="images/SaveAHomie.jpeg" alt="Save a Homie" class="w-20 h-20 mx-auto rounded-md" />
+        </div>
+        <h2 class="text-2xl font-bold text-red-600 mb-2">Save a Homie</h2>
+        <p class="text-gray-700 mb-4">Rescue one of your homies caught up in the system.</p
 
-    <!-- Main Content -->
-    <main id="main-content" class="flex-1 p-10 overflow-hidden min-h-screen relative z-10">
-      <!-- Content gets injected here -->
-    </main>
-
-  </div>
-
-<script>
-  function loadContent(section) {
-    // Save the current section to localStorage
-    localStorage.setItem('lastSection', section);
-
-    const content = document.getElementById('main-content');
-    while (content.firstChild) {
-      content.removeChild(content.firstChild);
-    }
-
-    let html = '';
-
-    switch (section) {
-      case 'block':
-        html = `
-          <h1 class="graffiti-title text-6xl md:text-7x1 text-red-600 font-bold mb-6">Welcome to The Block</h1>
-          <p class="text-lg text-gray-700">This is your hub — news, events, daily goals, and more coming soon.</p>
-        `;
-        break;
-
-      case 'homies':
-        html = `
-          <h1 class="graffiti-title text-6xl md:text-7xl text-red-600 font-bold mb-6">Your Homies</h1>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="mb-4">
-                <img src="images/RecruitAHomie.jpeg" alt="Recruit a Homie Icon" class="w-20 h-20 mx-auto rounded-md"/>
-              </div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Recruit a Homie</h2>
-              <p class="text-gray-700 mb-4">Recruit a new Homie to join your squad. Choose from the base set of Homies here.</p>
-              <a href="recruiting.html" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit Recruiting Agency</a>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="mb-4">
-                <img src="images/SaveAHomie.jpeg" alt="Save a Homie Icon" class="w-20 h-20 mx-auto rounded-md"/>
-              </div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Bail Out a Homie</h2>
-              <p class="text-gray-700 mb-4">Bail out a Homie that was picked up off the streets, committing crimes to survive.</p>
-              <a href="#" onclick="loadContent('adopt')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Visit the Jail</a>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition">
-              <div class="mb-4">
-                <img src="images/AbandonAHomie.jpeg" alt="Abandon a Homie Icon" class="w-20 h-20 mx-auto rounded-md"/>
-              </div>
-              <h2 class="text-2xl font-bold text-red-600 mb-2">Kick 'Em Out</h2>
-              <p class="text-gray-700 mb-4">Let go of your Homies who ain't cuttin' it. See if they can fend for themselves out on the streets.</p>
-              <a href="#" onclick="loadContent('abandon')" class="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">Take a Drive</a>
-            </div>
-          </div>
-        `;
-        break;
-
-      case 'recruit':
-        html = `
-          <h1 class="text-5xl text-red-800 mb-6 main-title">🎯 Recruit a Homie</h1>
-          <p class="text-lg text-gray-700 mb-4">Pick your first eHomie from a lineup of real ones. No randoms here—choose wisely and train 'em right.</p>
-          <div class="flex space-x-4 mb-6">
-            <button onclick="loadContent('adopt')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">❤️ Save a Homie</button>
-            <button onclick="loadContent('recruit')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🎯 Recruit a Homie</button>
-            <button onclick="loadContent('abandon')" class="bg-red-600 hover:bg-red-700 text-white py-2 px-4 bubbly">🚪 Abandon a Homie</button>
-          </div>
-          <p class="text-gray-600">[Insert your recruit selection UI here]</p>
-        `;
-        break;
-
-      case 'adopt':
-        html = `
-          <h1 class="text-5xl text-red-800 mb-6 main-title">❤️ Save a Homie</h1>
-          <p class="text-lg text-gray-700 mb-4">These homies been through it and need a new shot. Show some love, give 'em a home, and they'll hold you down for life.</p>
-          <p class="text-gray-600">[Insert adopt interface here]</p>
-        `;
-        break;
-
-      case 'abandon':
-        html = `
-          <h1 class="text-5xl text-red-800 mb-6 main-title">🚪 Kick 'Em Out</h1>
-          <p class="text-lg text-gray-700 mb-4">Not every eHomie makes the cut. If it’s time to part ways, let 'em go with style. But don’t say we didn’t warn ya.</p>
-          <p class="text-gray-600">[Insert abandon interface here]</p>
-        `;
-        break;
-
-      case 'stash':
-        html = `
-          <h1 class="graffiti-title text-7xl text-red-600 font-bold mb-6">Stash Spot</h1>
-          <p class="text-lg text-gray-700">Store your gear, goodies, and street treasures here. Inventory system coming soon.</p>
-        `;
-        break;
-
-      case 'cred':
-        html = `
-          <h1 class="graffiti-title text-7xl text-red-600 font-bold mb-6">Street Cred</h1>
-          <p class="text-lg text-gray-700">Track your rep, badges, and homie milestones. More stats dropping soon.</p>
-        `;
-        break;
-
-      case 'settings':
-        html = `
-          <h1 class="graffiti-title text-7xl text-red-600 font-bold mb-6">Settings</h1>
-          <p class="text-lg text-gray-700">Adjust your account, theme, and game preferences here.</p>
-        `;
-        break;
-    }
-
-    content.innerHTML = html;
-  }
-
-// On page load
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const sectionFromURL = params.get('section');
-  const lastSection = localStorage.getItem('lastSection');
-
-  let sectionToLoad = 'block'; // default fallback
-
-  if (sectionFromURL) {
-    sectionToLoad = sectionFromURL;
-    localStorage.setItem('lastSection', sectionFromURL); // update saved
-  } else if (lastSection) {
-    sectionToLoad = lastSection;
-  }
-
-  loadContent(sectionToLoad);
-});
-
-
-</script>
-
-</body>
-</html>
