@@ -203,9 +203,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let section;
 
-  // Only use the URL section if no stored section exists yet
-  if (!sectionFromStorage && sectionFromURL) {
+  // 🔁 Use the URL section if it exists — override storage
+  if (sectionFromURL) {
     section = sectionFromURL;
+    localStorage.setItem('lastSection', sectionFromURL); // update saved value
   } else {
     section = sectionFromStorage || 'block';
   }
