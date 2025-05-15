@@ -195,11 +195,13 @@ content.innerHTML = html; // Inject new content
       sessionStorage.setItem('lastSection', section);
     }
 
-    // Load the last section (or default) on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const section = sessionStorage.getItem('lastSection') || 'block';
-      loadContent(section);
-    });
+   // ✅ This goes at the END of your <script> block
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const section = urlParams.get('section') || 'block'; // defaults to "block"
+  loadContent(section);
+});
+
   </script>
 
 </body>
