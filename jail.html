@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eHomies - Settings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Street Soul';
+      src: url('./fonts/street soul.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .graffiti-title {
+      font-family: 'Street Soul', cursive;
+    }
+
+    .main-title {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 #333;
+    }
+
+    .bubbly {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: bold;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#EADACD] text-gray-800 font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-red-800 text-white p-6">
+      <div class="mb-8">
+        <img src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
+        <h2 class="text-center mt-4 text-xl font-bold">NuggzBunny</h2>
+        <p class="text-center text-sm">Level 12</p>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="index.html?section=block" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">🏠 The Block</a>
+        <a href="homies.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">👥 Your Homies</a>
+        <a href="stash.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">💼 Stash Spot</a>
+        <a href="cred.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">📈 Street Cred</a>
+        <a href="settings.html" class="w-full block bg-red-600 hover:bg-red-700 py-2 px-4 bubbly text-white text-center">⚙️ Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+      <h1 class="graffiti-title text-7xl text-red-600 mb-6">West Side Jail</h1>
+      <p class="text-lg text-gray-700">These animals were abandoned and resorted to a life of crime. Choose a Homie to bail out and join your squad.</p>
+
+      <!-- Settings content goes here -->
+    </main>
+  </div>
+</body>
+</html>
