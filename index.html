@@ -44,6 +44,14 @@
       <p class="text-lg text-gray-700">This is your hub — news, events, daily goals, and more coming soon.</p>
     </main>
   </div>
+  <script>
+  fetch('sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    });
+</script>
+
 </body>
 </html>
 
