@@ -46,5 +46,13 @@
       <!-- Settings content goes here -->
     </main>
   </div>
+  <script>
+  fetch('sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    });
+</script>
+
 </body>
 </html>
