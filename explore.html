@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>eHomies - Explore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Street Soul';
+      src: url('./fonts/street soul.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .graffiti-title {
+      font-family: 'Street Soul', cursive;
+    }
+
+    .main-title {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 #333;
+    }
+
+    .bubbly {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: bold;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#EADACD] text-gray-800 font-sans">
+  <div class="flex min-h-screen">
+   <div id="sidebar-placeholder"></div>
+
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10">
+      <div class="w-full bg-cyan-300 py-2 px-6 rounded-b-xl shadow-md mb-10">
+      <h1 class="graffiti-title text-8xl text-red-600 mb-6">Explore</h1>
+      </div>
+      <p class="text-lg text-gray-700">Explore the city, visit shops, get into some trouble.</p>
+
+      <!-- Add your stash content below this comment when ready -->
+    </main>
+  </div>
+  <script>
+  fetch('sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>
