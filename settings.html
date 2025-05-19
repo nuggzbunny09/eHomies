@@ -68,6 +68,13 @@
       document.body.appendChild(script);
     });
 </script>
+  <script>
+  function logoutUser() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+  }
+</script>
+
 
 </body>
 </html>
