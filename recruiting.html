@@ -213,7 +213,7 @@
   }
 
   function recruitHomie() {
-    const username = localStorage.getItem("loggedInUser");
+    const username = localStorage.getItem("currentUser");
     if (!username || !selectedHomie) return alert("Something went wrong.");
 
     let users = JSON.parse(localStorage.getItem("users")) || {};
