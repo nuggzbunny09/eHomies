@@ -21,7 +21,7 @@ if (currentUser) {
     if (!container) return setTimeout(tryInjectSidebarInfo, 50);
 
     container.innerHTML = `
-      <img src="${user.avatar}" alt="User Avatar" class="bg-cyan-300 w-24 h-24 mx-auto shadow-md object-contain border-3 border-cyan-400"/>
+      <img src="${user.avatar}" alt="User Avatar" class="bg-cyan-300 w-24 h-24 mx-auto shadow-md object-contain border-3 border-cyan-600"/>
       <h2 class="text-center mt-4 text-xl font-bold">${user.username}</h2>
       <p class="text-center text-sm">Level ${user.level}</p>
     `;
