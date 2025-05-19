@@ -1,7 +1,8 @@
 <!-- Sidebar -->
 <aside class="w-64 bg-red-800 text-white p-6 h-full">
-  <div class="mb-8" id="sidebar-user-info">
-  </div>
+ <div id="sidebar-user-info" class="mb-8">
+ </div>
+  
 
 
       <nav class="space-y-3">
@@ -35,20 +36,7 @@
 </a>
       </nav>
     </aside>
-<script>
-    // Run after sidebar is loaded
-  const currentUsername = localStorage.getItem("currentUser");
-  const userData = currentUsername && localStorage.getItem(currentUsername);
+<script src="auth.js"></script>
 
-  if (userData) {
-    const user = JSON.parse(userData);
-    const userHtml = `
-      <img src="${user.avatar}" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
-      <h2 class="text-center mt-4 text-xl font-bold">${user.username}</h2>
-      <p class="text-center text-sm">Level ${user.level}</p>
-    `;
-    document.getElementById("sidebar-user-info").innerHTML = userHtml;
-  }
-</script>
 
 
