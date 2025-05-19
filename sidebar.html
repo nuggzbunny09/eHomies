@@ -1,56 +1,36 @@
 <!-- Sidebar -->
 <aside class="w-64 bg-red-800 text-white p-6 h-full">
- <div id="sidebar-user-info" class="mb-8">
- </div>
-  
+  <div id="sidebar-user-info" class="mb-8"></div>
 
-
-      <nav class="space-y-3">
-        <a href="index.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/BlockButton.png" alt="The Block" class="w-12 h-12 inline-block" />
-  <span>The Block</span>
-</a>
-        <a href="homies.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/SquadButton.png" alt="Your Squad" class="w-12 h-12 inline-block" />
-  <span>Your Squad</span>
-</a>
-        <a href="explore.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/ExploreButton.png" alt="Explore" class="w-12 h-12 inline-block" />
-  <span>Explore</span>
-</a>
-          <a href="games.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/GamesButton.png" alt="Games" class="w-12 h-12 inline-block" />
-  <span>Game Room</span>
-</a>
-        <a href="stash.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/StashButton.png" alt="Stash Spot" class="w-12 h-12 inline-block" />
-  <span>Stash Spot</span>
-</a>
-        <a href="cred.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/CredButton.png" alt="Street Cred" class="w-12 h-12 inline-block" />
-  <span>Street Cred</span>
-</a>
-        <a href="settings.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
-  <img src="images/SettingsButton.png" alt="Settings" class="w-12 h-12 inline-block" />
-  <span>Settings</span>
-</a>
-      </nav>
-    </aside>
-<script>
-  const currentUsername = localStorage.getItem("currentUser");
-  const userData = currentUsername && localStorage.getItem(currentUsername);
-
-  if (userData) {
-    const user = JSON.parse(userData);
-    const userHtml = `
-      <img src="${user.avatar}" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
-      <h2 class="text-center mt-4 text-xl font-bold">${user.username}</h2>
-      <p class="text-center text-sm">Level ${user.level}</p>
-    `;
-    document.getElementById("sidebar-user-info").innerHTML = userHtml;
-  }
-</script>
-
-
-
-
+  <nav class="space-y-3">
+    <!-- Navigation buttons stay unchanged -->
+    <a href="index.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/BlockButton.png" alt="The Block" class="w-12 h-12 inline-block" />
+      <span>The Block</span>
+    </a>
+    <a href="homies.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/SquadButton.png" alt="Your Squad" class="w-12 h-12 inline-block" />
+      <span>Your Squad</span>
+    </a>
+    <a href="explore.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/ExploreButton.png" alt="Explore" class="w-12 h-12 inline-block" />
+      <span>Explore</span>
+    </a>
+    <a href="games.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/GamesButton.png" alt="Games" class="w-12 h-12 inline-block" />
+      <span>Game Room</span>
+    </a>
+    <a href="stash.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/StashButton.png" alt="Stash Spot" class="w-12 h-12 inline-block" />
+      <span>Stash Spot</span>
+    </a>
+    <a href="cred.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/CredButton.png" alt="Street Cred" class="w-12 h-12 inline-block" />
+      <span>Street Cred</span>
+    </a>
+    <a href="settings.html" class="w-full block bg-cyan-300 hover:bg-cyan-500 py-2 px-4 bubbly text-red-600 text-center">
+      <img src="images/SettingsButton.png" alt="Settings" class="w-12 h-12 inline-block" />
+      <span>Settings</span>
+    </a>
+  </nav>
+</aside>
