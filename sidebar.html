@@ -38,4 +38,23 @@
 </a>
       </nav>
     </aside>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentUserKey = localStorage.getItem("currentUser");
+    if (!currentUserKey) return;
+
+    const userData = JSON.parse(localStorage.getItem(currentUserKey));
+    if (!userData) return;
+
+    // Update the sidebar content
+    document.getElementById("user-name").textContent = userData.username;
+    document.getElementById("user-level").textContent = "Level " + userData.level;
+
+    // Optional: If you store a custom avatar, use it. Otherwise fallback to default
+    if (userData.avatar) {
+      document.getElementById("user-avatar").src = userData.avatar;
+    }
+  });
+</script>
+
 
