@@ -28,7 +28,7 @@ const tryInjectSidebarInfo = () => {
     container.innerHTML = `
       <img src="images/eHomies.png" alt="Default Logo" class="bg-cyan-300 w-24 h-24 mx-auto shadow-md object-contain border-3 border-cyan-600"/>
       <h2 class="text-center mt-4 text-xl font-bold">
-        <a href="login.html" class="text-blue-600 underline">Login to eHomies</a>
+        <a href="login.html" class="text-cyan-300 underline text-bold">Login to eHomies</a>
       </h2>
     `;
   }
