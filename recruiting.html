@@ -216,7 +216,7 @@
     const username = localStorage.getItem("currentUser");
     if (!username || !selectedHomie) return alert("Something went wrong.");
 
-    let users = JSON.parse(localStorage.getItem("users")) || {};
+    let users = JSON.parse(localStorage.getItem("currentUser")) || {};
     if (!users[username]) users[username] = { adoptedHomies: [] };
 
     users[username].adoptedHomies.push({
@@ -225,7 +225,7 @@
       stats: { level: 1, xp: 0, equippedItems: [] }
     });
 
-    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", JSON.stringify(users));
     alert(`${selectedHomie.name} joined your crew!`);
     window.location.href = "index.html"; // Or redirect wherever you want
   }
