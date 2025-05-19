@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eHomies - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     @font-face {
       font-family: 'Street Soul';
@@ -33,63 +32,50 @@
 </head>
 <body class="bg-[#EADACD] text-gray-800 font-sans">
   <div class="flex min-h-screen">
-    <!-- Sidebar Placeholder -->
-    <div id="sidebar-placeholder"></div>
-
-    <!-- Main Content -->
+    <!-- No sidebar here -->
     <main class="flex-1 p-10">
       <div class="w-full bg-cyan-300 py-2 px-6 rounded-b-xl shadow-md mb-10">
-        <h1 class="graffiti-title text-8xl text-red-600 mb-6">Login</h1>
+        <h1 class="graffiti-title text-8xl text-red-600 mb-6">Log In</h1>
       </div>
 
-      <p class="text-lg text-gray-700 mb-6">Enter your username to begin your eHomies journey.</p>
+      <p class="text-lg text-gray-700 mb-6">Enter your username to log in and join your eHomies squad.</p>
 
-      <div class="max-w-xl mx-auto bg-white p-10 rounded-2xl shadow-md text-center">
-        <input
-          id="usernameInput"
-          type="text"
-          placeholder="Enter your username"
-          class="w-full p-3 mb-6 border border-gray-300 rounded-md"
-        />
-        <button
-          onclick="loginUser()"
-          class="bubbly bg-cyan-300 hover:bg-cyan-500 text-red-800 py-2 px-6 text-lg"
-        >
+      <form id="loginForm" class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+        <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
+        <input type="text" id="username" name="username" required
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
+
+        <button type="submit"
+                class="w-full bg-cyan-300 hover:bg-cyan-500 text-red-600 bubbly font-bold py-2 rounded-full transition duration-300">
           Log In
         </button>
-      </div>
+
+        <p id="loginError" class="text-red-600 mt-4 hidden">Invalid username. Try again.</p>
+      </form>
     </main>
   </div>
 
   <script>
-    fetch('sidebar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('sidebar-placeholder').innerHTML = data;
-      });
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
 
-    function loginUser() {
-      const username = document.getElementById('usernameInput').value.trim();
-
-      if (!username) {
-        alert('Please enter a username.');
-        return;
-      }
-
-      let user = JSON.parse(localStorage.getItem(username));
-      if (!user) {
-        user = {
-          username: username,
-          level: 1,
+      if (username === "NuggzBunny") {
+        const user = {
+          username: "NuggzBunny",
+          level: 12,
           avatar: "https://sapi.subeta.net/avatar/736889.png",
           homies: []
         };
-        localStorage.setItem(username, JSON.stringify(user));
-      }
 
-      localStorage.setItem("currentUser", username);
-      window.location.href = "index.html";
-    }
+        localStorage.setItem("currentUser", "NuggzBunny");
+        localStorage.setItem("NuggzBunny", JSON.stringify(user));
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("loginError").classList.remove("hidden");
+      }
+    });
   </script>
 </body>
 </html>
+
