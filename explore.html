@@ -77,8 +77,14 @@
     .then(res => res.text())
     .then(data => {
       document.getElementById('sidebar-placeholder').innerHTML = data;
+    })
+    .then(() => {
+      const script = document.createElement("script");
+      script.src = "auth.js";
+      document.body.appendChild(script);
     });
 </script>
+
 
 </body>
 </html>
