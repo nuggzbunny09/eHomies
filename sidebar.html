@@ -1,9 +1,6 @@
 <!-- Sidebar -->
 <aside class="w-64 bg-red-800 text-white p-6 h-full">
-  <div class="mb-8">
-    <img id="user-avatar" src="https://sapi.subeta.net/avatar/736889.png" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
-    <h2 id="user-name" class="text-center mt-4 text-xl font-bold">Username</h2>
-    <p id="user-level" class="text-center text-sm">Level</p>
+  <div class="mb-8" id="sidebar-user-info">
   </div>
 
 
@@ -39,22 +36,19 @@
       </nav>
     </aside>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const currentUserKey = localStorage.getItem("currentUser");
-    if (!currentUserKey) return;
+    // Run after sidebar is loaded
+  const currentUsername = localStorage.getItem("currentUser");
+  const userData = currentUsername && localStorage.getItem(currentUsername);
 
-    const userData = JSON.parse(localStorage.getItem(currentUserKey));
-    if (!userData) return;
-
-    // Update the sidebar content
-    document.getElementById("user-name").textContent = userData.username;
-    document.getElementById("user-level").textContent = "Level " + userData.level;
-
-    // Optional: If you store a custom avatar, use it. Otherwise fallback to default
-    if (userData.avatar) {
-      document.getElementById("user-avatar").src = userData.avatar;
-    }
-  });
+  if (userData) {
+    const user = JSON.parse(userData);
+    const userHtml = `
+      <img src="${user.avatar}" alt="User Avatar" class="rounded-full w-24 h-24 mx-auto shadow-md"/>
+      <h2 class="text-center mt-4 text-xl font-bold">${user.username}</h2>
+      <p class="text-center text-sm">Level ${user.level}</p>
+    `;
+    document.getElementById("sidebar-user-info").innerHTML = userHtml;
+  }
 </script>
 
 
