@@ -100,6 +100,71 @@
     </main>
   </div>
   <script>
+  const homies = [
+    {
+      id: "chacha",
+      name: "ChaCha the Chihuahua",
+      image: "images/ChaCha.jpeg",
+      backstory: "ChaCha is small but fierce, a loyal street pup who grew up dodging alley cats and scooters. She's got heart and hustle."
+    },
+    {
+      id: "bully",
+      name: "Bully the Bulldog",
+      image: "images/Bully.jpeg",
+      backstory: "Bully is a big softie with a tough bark. Once a neighborhood bouncer, now he's just looking for a real crew to chill with."
+    },
+    {
+      id: "felon",
+      name: "Felon the Feline",
+      image: "images/Felon.jpeg",
+      backstory: "Slick and sly, Felon knows how to vanish in a flash. No one really knows her full story, and she likes it that way."
+    },
+    {
+      id: "squirt",
+      name: "Squirt the Squirrel",
+      image: "images/Squirt.jpeg",
+      backstory: "Squirt's the lookout—fast, jittery, and always on alert. Perfect homie for street intel."
+    },
+    {
+      id: "beefy",
+      name: "Beefy the Cow",
+      image: "images/Beefy.jpeg",
+      backstory: "Beefy grew up on the wrong side of the pasture. He's strong, silent, and ready to throw down for his crew."
+    },
+    {
+      id: "racquet",
+      name: "Racquet the Racoon",
+      image: "images/Racquet.jpeg",
+      backstory: "Racquet is the master of scavenging and stealth. You want him on your side when the lights go out."
+    },
+    {
+      id: "rivera",
+      name: "Rivera the Goldfish",
+      image: "images/Rivera.jpeg",
+      backstory: "Don’t be fooled by the bowl—Rivera's sharp, calculating, and somehow always in the know."
+    },
+    {
+      id: "turty",
+      name: "Turty the Turtle",
+      image: "images/Turty.jpeg",
+      backstory: "Turty might be slow, but he’s wise and reliable. The crew calls him the strategist."
+    },
+    {
+      id: "soary",
+      name: "Soary the Pidgeon",
+      image: "images/Soary.jpeg",
+      backstory: "From rooftop to rooftop, Soary sees it all. The urban scout with wings of freedom."
+    },
+    {
+      id: "mallary",
+      name: "Mallary the Duck",
+      image: "images/Mallary.jpeg",
+      backstory: "Mallary’s loud, proud, and not afraid to waddle into trouble. She’s got attitude and feathers to match."
+    }
+  ];
+</script>
+
+  <script>
   fetch('sidebar.html')
     .then(res => res.text())
     .then(data => {
