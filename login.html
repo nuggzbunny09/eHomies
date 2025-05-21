@@ -54,47 +54,50 @@
           Log In
         </button>
 
-        <p id="loginError" class="text-red-600 mt-4 hidden">Invalid username or password.</p>
+        <p id="loginError" class="text-red-600 mt-4 hidden"></p>
+
         <p class="mt-6 text-center text-sm text-gray-600">
-  New user?
-  <a href="create.html" class="text-cyan-600 hover:text-cyan-800 font-semibold underline">Create Account Here</a>.
-</p>
+          New user?
+          <a href="create.html" class="text-cyan-600 hover:text-cyan-800 font-semibold underline">Create Account Here</a>.
+        </p>
       </form>
     </main>
   </div>
 
   <script>
-  document.getElementById("loginForm").addEventListener("submit", async function (e) {
-    e.preventDefault();
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-    const errorMsg = document.getElementById("loginError");
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const errorMsg = document.getElementById("loginError");
 
-    try {
-      const response = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      errorMsg.classList.add("hidden");
+      errorMsg.textContent = "";
 
-      const result = await response.json();
+      try {
+        const response = await fetch("http://localhost:3000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
 
-      if (response.ok && result.success) {
-        localStorage.setItem("currentUser", JSON.stringify(result.user));
-        window.location.href = "index.html";
-      } else {
-        errorMsg.textContent = result.message || "Invalid username or password.";
+        if (response.ok) {
+          const user = await response.json();
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          window.location.href = "index.html";
+        } else {
+          const result = await response.json();
+          errorMsg.textContent = result.error || "Invalid username or password.";
+          errorMsg.classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Login error:", err);
+        errorMsg.textContent = "Network error. Try again later.";
         errorMsg.classList.remove("hidden");
       }
-    } catch (err) {
-      console.error("Login error:", err);
-      errorMsg.textContent = "Login failed. Try again later.";
-      errorMsg.classList.remove("hidden");
-    }
-  });
-</script>
-
+    });
+  </script>
 
   <script>
     fetch('sidebar.html')
@@ -110,3 +113,4 @@
   </script>
 </body>
 </html>
+
