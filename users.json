@@ -1,0 +1,34 @@
+[
+  {
+    "username": "bob",
+    "password": "hashed_password_goes_here",  // Optional: You can start plain text for now
+    "userLevel": "1"
+    "XP": "0"
+    "recruitedHomies": [
+      {
+        "name": "Chihuahua",
+        "level": 3,
+        "xp": 80,
+        "equippedItems": [],
+        "miniHomie": null
+      },
+      {
+        "name": "Turtle",
+        "level": 2,
+        "xp": 45,
+        "equippedItems": [],
+        "miniHomie": null
+      }
+    ],
+    "homieBucks": 1250,
+    "missionsCompleted": ["Mission 1", "Mission 2"],
+    "inventory": [
+      { "name": "Red Hat", "type": "item" },
+      { "name": "Mini Squirrel", "type": "miniHomie" }
+    ],
+    "settings": {
+      "sound": true,
+      "theme": "graffiti"
+    }
+  }
+]
