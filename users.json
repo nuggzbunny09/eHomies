@@ -1,7 +1,7 @@
 [
   {
     "username": "bob",
-    "password": "hashed_password_goes_here",  // Optional: You can start plain text for now
+    "password": "hashed_password_goes_here",
     "userLevel": "1",
     "XP": "0",
     "recruitedHomies": [
