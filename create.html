@@ -61,66 +61,63 @@
   </div>
 
   <script>
-  document.getElementById("createForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
+    document.getElementById("createForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const birthdateInput = document.getElementById("birthdate").value;
+      const errorMsg = document.getElementById("createError");
 
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-    const birthdate = new Date(document.getElementById("birthdate").value);
-    const errorMsg = document.getElementById("createError");
+      errorMsg.classList.add("hidden");
+      errorMsg.textContent = "";
 
-    // Age check
-    const today = new Date();
-    const age = today.getFullYear() - birthdate.getFullYear();
-    const m = today.getMonth() - birthdate.getMonth();
-    const is17OrOlder = age > 17 || (age === 17 && m >= 0);
-
-    if (!is17OrOlder) {
-      errorMsg.textContent = "You must be at least 17 years old to create an account.";
-      errorMsg.classList.remove("hidden");
-      return;
-    }
-
-    const newUser = {
-      username,
-      password,
-      birthdate: birthdate.toISOString(),
-      level: 1,
-      XP: 0,
-      recruitedHomies: [],
-      homieBucks: 1000,
-      missionsCompleted: [],
-      inventory: [],
-      settings: {
-        sound: true,
-        theme: "graffiti"
-      }
-    };
-
-    try {
-      const response = await fetch("http://localhost:3000/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newUser)
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || "Something went wrong.");
+      if (!birthdateInput) {
+        errorMsg.textContent = "Please enter your birthdate.";
+        errorMsg.classList.remove("hidden");
+        return;
       }
 
-      // Success
-      window.location.href = "login.html";
-    } catch (err) {
-      errorMsg.textContent = err.message;
-      errorMsg.classList.remove("hidden");
-    }
-  });
-</script>
+      const birthdate = new Date(birthdateInput);
 
+      // Age check
+      const today = new Date();
+      const age = today.getFullYear() - birthdate.getFullYear();
+      const m = today.getMonth() - birthdate.getMonth();
+      const is17OrOlder = age > 17 || (age === 17 && m >= 0);
+
+      if (!is17OrOlder) {
+        errorMsg.textContent = "You must be at least 17 years old to create an account.";
+        errorMsg.classList.remove("hidden");
+        return;
+      }
+
+      const newUser = {
+        username,
+        password,
+        birthdate: birthdate.toISOString()
+      };
+
+      try {
+        const response = await fetch("http://localhost:3000/api/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newUser)
+        });
+
+        if (response.ok) {
+          window.location.href = "login.html";
+        } else {
+          const result = await response.json();
+          errorMsg.textContent = result.error || "Failed to create account.";
+          errorMsg.classList.remove("hidden");
+        }
+      } catch (err) {
+        console.error("Error creating account:", err);
+        errorMsg.textContent = "Network error. Try again later.";
+        errorMsg.classList.remove("hidden");
+      }
+    });
+  </script>
 
   <script>
     fetch('sidebar.html')
