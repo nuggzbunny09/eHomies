@@ -61,45 +61,66 @@
   </div>
 
   <script>
-    document.getElementById("createForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
-      const birthdate = new Date(document.getElementById("birthdate").value);
-      const errorMsg = document.getElementById("createError");
+  document.getElementById("createForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-      // Age check
-      const today = new Date();
-      const age = today.getFullYear() - birthdate.getFullYear();
-      const m = today.getMonth() - birthdate.getMonth();
-      const is17OrOlder = age > 17 || (age === 17 && m >= 0);
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    const birthdate = new Date(document.getElementById("birthdate").value);
+    const errorMsg = document.getElementById("createError");
 
-      if (!is17OrOlder) {
-        errorMsg.textContent = "You must be at least 17 years old to create an account.";
-        errorMsg.classList.remove("hidden");
-        return;
+    // Age check
+    const today = new Date();
+    const age = today.getFullYear() - birthdate.getFullYear();
+    const m = today.getMonth() - birthdate.getMonth();
+    const is17OrOlder = age > 17 || (age === 17 && m >= 0);
+
+    if (!is17OrOlder) {
+      errorMsg.textContent = "You must be at least 17 years old to create an account.";
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+
+    const newUser = {
+      username,
+      password,
+      birthdate: birthdate.toISOString(),
+      level: 1,
+      XP: 0,
+      recruitedHomies: [],
+      homieBucks: 1000,
+      missionsCompleted: [],
+      inventory: [],
+      settings: {
+        sound: true,
+        theme: "graffiti"
+      }
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newUser)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong.");
       }
 
-      // Simulate saving to users.json
-      const newUser = {
-        username,
-        password,
-        userLevel: 1,
-        XP: 0,
-        recruitedHomies: [],
-        homieBucks: 1000,
-        missionsCompleted: [],
-        inventory: [],
-        settings: { sound: true, theme: "graffiti" }
-      };
-
-      // In production, send this to your server with fetch()
-      console.log("Saving user:", newUser);
-
-      // Redirect to login
+      // Success
       window.location.href = "login.html";
-    });
-  </script>
+    } catch (err) {
+      errorMsg.textContent = err.message;
+      errorMsg.classList.remove("hidden");
+    }
+  });
+</script>
+
 
   <script>
     fetch('sidebar.html')
