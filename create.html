@@ -137,7 +137,7 @@
     };
 
     users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", user.username);
     localStorage.setItem("currentUser", username);
 
     window.location.href = "index.html";
