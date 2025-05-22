@@ -17,6 +17,12 @@
       font-family: 'Street Soul', cursive;
     }
 
+    .main-title {
+      font-family: 'Comic Sans MS', cursive;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 #333;
+    }
+
     .bubbly {
       font-family: 'Comic Sans MS', cursive;
       font-weight: bold;
@@ -32,18 +38,20 @@
         <h1 class="graffiti-title text-8xl text-red-600 mb-6">Create Account</h1>
       </div>
 
+      <p class="text-lg text-gray-700 mb-6">Enter your info to create an account and join the eHomies world!</p>
+
       <form id="createForm" class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
         <label for="username" class="block text-sm font-semibold text-gray-700 mb-2">Username</label>
-        <input type="text" id="username" name="username" required
-               class="w-full px-4 py-2 border rounded-lg mb-4" />
+        <input type="text" id="username" required
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
 
         <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-        <input type="password" id="password" name="password" required
-               class="w-full px-4 py-2 border rounded-lg mb-4" />
+        <input type="password" id="password" required
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
 
         <label for="birthdate" class="block text-sm font-semibold text-gray-700 mb-2">Birthdate</label>
-        <input type="date" id="birthdate" name="birthdate" required
-               class="w-full px-4 py-2 border rounded-lg mb-4" />
+        <input type="date" id="birthdate" required
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
 
         <button type="submit"
                 class="w-full bg-cyan-300 hover:bg-cyan-500 text-red-600 bubbly font-bold py-2 rounded-full transition duration-300">
@@ -51,71 +59,65 @@
         </button>
 
         <p id="createError" class="text-red-600 mt-4 hidden"></p>
+        <p class="mt-6 text-center text-sm text-gray-600">
+          Already have an account?
+          <a href="login.html" class="text-cyan-600 hover:text-cyan-800 font-semibold underline">Log in here</a>.
+        </p>
       </form>
-
-      <p class="mt-6 text-center text-sm text-gray-600">
-        Already have an account?
-        <a href="login.html" class="text-cyan-600 hover:text-cyan-800 font-semibold underline">Log In Here</a>.
-      </p>
     </main>
   </div>
 
   <script>
-    document.getElementById("createForm").addEventListener("submit", async function(e) {
+    document.getElementById("createForm").addEventListener("submit", function (e) {
       e.preventDefault();
+
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value;
-      const birthdateInput = document.getElementById("birthdate").value;
-      const errorMsg = document.getElementById("createError");
+      const birthdate = document.getElementById("birthdate").value;
+      const error = document.getElementById("createError");
 
-      errorMsg.classList.add("hidden");
-      errorMsg.textContent = "";
-
-      if (!birthdateInput) {
-        errorMsg.textContent = "Please enter your birthdate.";
-        errorMsg.classList.remove("hidden");
+      if (!username || !password || !birthdate) {
+        error.textContent = "Please fill in all fields.";
+        error.classList.remove("hidden");
         return;
       }
 
-      const birthdate = new Date(birthdateInput);
+      const age = Math.floor((Date.now() - new Date(birthdate)) / (1000 * 60 * 60 * 24 * 365.25));
+      if (age < 17) {
+        error.textContent = "You must be 17 or older to create an account.";
+        error.classList.remove("hidden");
+        return;
+      }
 
-      // Age check
-      const today = new Date();
-      const age = today.getFullYear() - birthdate.getFullYear();
-      const m = today.getMonth() - birthdate.getMonth();
-      const is17OrOlder = age > 17 || (age === 17 && m >= 0);
+      const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      if (!is17OrOlder) {
-        errorMsg.textContent = "You must be at least 17 years old to create an account.";
-        errorMsg.classList.remove("hidden");
+      if (users.some(user => user.username === username)) {
+        error.textContent = "Username already exists.";
+        error.classList.remove("hidden");
         return;
       }
 
       const newUser = {
         username,
         password,
-        birthdate: birthdate.toISOString()
+        userLevel: 1,
+        XP: 0,
+        XPtoNext: 100, // Level 1 requires 100 XP
+        recruitedHomies: [],
+        homieBucks: 1000,
+        missionsCompleted: [],
+        inventory: [],
+        settings: {
+          sound: true,
+          theme: 'graffiti'
+        }
       };
 
-      try {
-        const response = await fetch("http://localhost:3000/api/create", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newUser)
-        });
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("currentUser", JSON.stringify(newUser));
 
-        if (response.ok) {
-          window.location.href = "login.html";
-        } else {
-          const result = await response.json();
-          errorMsg.textContent = result.error || "Failed to create account.";
-          errorMsg.classList.remove("hidden");
-        }
-      } catch (err) {
-        console.error("Error creating account:", err);
-        errorMsg.textContent = "Network error. Try again later.";
-        errorMsg.classList.remove("hidden");
-      }
+      window.location.href = "index.html";
     });
   </script>
 
