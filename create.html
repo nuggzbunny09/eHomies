@@ -48,6 +48,10 @@
         <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
         <input type="password" id="password" required
                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
+        <label for="confirmPassword" class="block text-sm font-semibold text-gray-700 mb-2">Re-enter Password</label>
+        <input type="password" id="confirmPassword" required
+       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 mb-4" />
+
 
         <label for="birthdate" class="block text-sm font-semibold text-gray-700 mb-2">Birthdate</label>
         <input type="date" id="birthdate" required
@@ -68,58 +72,78 @@
   </div>
 
   <script>
-    document.getElementById("createForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+  document.getElementById("createForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
-      const birthdate = document.getElementById("birthdate").value;
-      const error = document.getElementById("createError");
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const birthdate = document.getElementById("birthdate").value;
+    const error = document.getElementById("createError");
 
-      if (!username || !password || !birthdate) {
-        error.textContent = "Please fill in all fields.";
-        error.classList.remove("hidden");
-        return;
+    error.classList.add("hidden");
+
+    if (!username || !password || !confirmPassword || !birthdate) {
+      error.textContent = "Please fill in all fields.";
+      error.classList.remove("hidden");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      error.textContent = "Passwords do not match.";
+      error.classList.remove("hidden");
+      return;
+    }
+
+    const age = Math.floor((Date.now() - new Date(birthdate)) / (1000 * 60 * 60 * 24 * 365.25));
+    if (age < 17) {
+      error.textContent = "You must be 17 or older to create an account.";
+      error.classList.remove("hidden");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (!Array.isArray(users)) {
+      error.textContent = "User data is corrupted. Please clear your local storage.";
+      error.classList.remove("hidden");
+      return;
+    }
+
+    if (users.some(user => user.username.toLowerCase() === username.toLowerCase())) {
+      error.textContent = "Username already exists.";
+      error.classList.remove("hidden");
+      return;
+    }
+
+    // Confirm account creation
+    const confirmed = window.confirm(`Are you sure you want to create an account with the username "${username}"?`);
+    if (!confirmed) return;
+
+    const newUser = {
+      username,
+      password,
+      userLevel: 1,
+      XP: 0,
+      XPtoNext: 100,
+      recruitedHomies: [],
+      homieBucks: 1000,
+      missionsCompleted: [],
+      inventory: [],
+      settings: {
+        sound: true,
+        theme: 'graffiti'
       }
+    };
 
-      const age = Math.floor((Date.now() - new Date(birthdate)) / (1000 * 60 * 60 * 24 * 365.25));
-      if (age < 17) {
-        error.textContent = "You must be 17 or older to create an account.";
-        error.classList.remove("hidden");
-        return;
-      }
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("currentUser", username);
 
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+    window.location.href = "index.html";
+  });
+</script>
 
-      if (users.some(user => user.username === username)) {
-        error.textContent = "Username already exists.";
-        error.classList.remove("hidden");
-        return;
-      }
-
-      const newUser = {
-        username,
-        password,
-        userLevel: 1,
-        XP: 0,
-        XPtoNext: 100, // Level 1 requires 100 XP
-        recruitedHomies: [],
-        homieBucks: 1000,
-        missionsCompleted: [],
-        inventory: [],
-        settings: {
-          sound: true,
-          theme: 'graffiti'
-        }
-      };
-
-      users.push(newUser);
-      localStorage.setItem("users", JSON.stringify(users));
-      localStorage.setItem("currentUser", JSON.stringify(newUser));
-
-      window.location.href = "index.html";
-    });
-  </script>
 
   <script>
     fetch('sidebar.html')
