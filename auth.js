@@ -5,7 +5,7 @@ const publicPages = ['index.html', 'login.html', 'create.html'];
 const currentPage = window.location.pathname.split('/').pop();
 
 // Get current session user
-const currentUser = localStorage.getItem("currentUser");
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 // Redirect to login page if user is not logged in
 if (!currentUser && !publicPages.includes(currentPage)) {
