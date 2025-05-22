@@ -75,13 +75,24 @@
 function renderHomies() {
   const currentUsername = localStorage.getItem("currentUser");
   if (!currentUsername) {
-    // Redirect if no user is logged in
     window.location.href = "login.html";
     return;
   }
 
-  const user = JSON.parse(localStorage.getItem(currentUsername));
+  const usersRaw = localStorage.getItem("users");
+  let users = [];
+
+  try {
+    users = JSON.parse(usersRaw) || [];
+  } catch (e) {
+    console.error("Failed to parse users:", e);
+    window.location.href = "login.html";
+    return;
+  }
+
+  const user = users.find(u => u.username === currentUsername);
   if (!user) {
+    console.warn("No matching user found for currentUser:", currentUsername);
     window.location.href = "login.html";
     return;
   }
@@ -89,7 +100,12 @@ function renderHomies() {
   const container = document.getElementById("homie-list");
   container.innerHTML = ""; // Clear any existing content
 
-  user.homies.forEach(homie => {
+  if (!user.recruitedHomies || user.recruitedHomies.length === 0) {
+    container.innerHTML = `<p class="text-center col-span-full text-lg text-gray-700">You haven't recruited any Homies yet!</p>`;
+    return;
+  }
+
+  user.recruitedHomies.forEach(homie => {
     const xpPercent = (homie.xp / homie.xpToNext) * 100;
 
     const homieCard = document.createElement("div");
@@ -112,6 +128,7 @@ function renderHomies() {
 
 window.onload = renderHomies;
 </script>
+
 
 
       </div>
