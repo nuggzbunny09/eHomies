@@ -43,12 +43,13 @@ const tryInjectSidebarInfo = () => {
     `;
   } else {
     container.innerHTML = `
-      <img src="images/eHomies.png" alt="Default Logo"
-           class="bg-cyan-300 w-24 h-24 mx-auto shadow-md object-contain border-3 border-cyan-600"/>
-      <h2 class="text-center mt-4 text-xl font-bold text-red-300">User data not found</h2>
+      <a href="login.html" class="block text-center text-white bg-cyan-600 hover:bg-cyan-700 py-2 px-4 rounded-md font-bold shadow-md">
+        Login to eHomies
+      </a>
     `;
   }
 };
+
 
 tryInjectSidebarInfo();
 
