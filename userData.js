@@ -17,8 +17,8 @@ function getCurrentUser() {
 }
 
 // Set the current logged-in user data
-function setCurrentUser(username) {
-  localStorage.setItem("currentUser", username);
+function setCurrentUser(user) {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
 // Get the full user list
