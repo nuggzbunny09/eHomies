@@ -1,6 +1,13 @@
 const publicPages = ['index.html', 'login.html', 'create.html'];
 const currentPage = window.location.pathname.split('/').pop();
-const currentUser = localStorage.getItem("currentUser");
+
+// Parse currentUser as an object
+let currentUser = null;
+try {
+  currentUser = JSON.parse(localStorage.getItem("currentUser"));
+} catch (e) {
+  console.warn("Could not parse currentUser from localStorage:", e);
+}
 
 if (!currentUser && !publicPages.includes(currentPage)) {
   window.location.href = "login.html";
@@ -21,9 +28,9 @@ function getCurrentUserData() {
     return null;
   }
 
-  const user = users.find(u => u.username === currentUser);
+  const user = users.find(u => u.username === currentUser?.username);
   if (!user) {
-    console.warn(`No matching user for currentUser="${currentUser}".`);
+    console.warn(`No matching user for currentUser.username="${currentUser?.username}".`);
   }
 
   return user;
@@ -52,7 +59,6 @@ const tryInjectSidebarInfo = () => {
     `;
   }
 };
-
 
 tryInjectSidebarInfo();
 
