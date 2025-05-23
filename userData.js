@@ -56,3 +56,11 @@ function updateUser(updatedUser) {
 function getUserByUsername(username) {
   return getAllUsers().find(u => u.username === username) || null;
 }
+
+// Add a new user to the users list
+function addUser(newUser) {
+  const users = getAllUsers();
+  users.push(newUser);
+  setAllUsers(users);
+}
+
