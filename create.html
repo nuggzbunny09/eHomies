@@ -78,13 +78,11 @@
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    const birthdate = document.getElementById("birthdate").value;
+
     const error = document.getElementById("createError");
 
-    error.classList.add("hidden");
-
-    if (!username || !password || !confirmPassword || !birthdate) {
-      error.textContent = "Please fill in all fields.";
+    if (!username || !password || !confirmPassword) {
+      error.textContent = "All fields are required.";
       error.classList.remove("hidden");
       return;
     }
@@ -95,30 +93,14 @@
       return;
     }
 
-    const age = Math.floor((Date.now() - new Date(birthdate)) / (1000 * 60 * 60 * 24 * 365.25));
-    if (age < 17) {
-      error.textContent = "You must be 17 or older to create an account.";
-      error.classList.remove("hidden");
-      return;
-    }
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    if (!Array.isArray(users)) {
-      error.textContent = "User data is corrupted. Please clear your local storage.";
-      error.classList.remove("hidden");
-      return;
-    }
-
-    if (users.some(user => user.username.toLowerCase() === username.toLowerCase())) {
+    if (getUserByUsername(username)) {
       error.textContent = "Username already exists.";
       error.classList.remove("hidden");
       return;
     }
 
-    // Confirm account creation
-    const confirmed = window.confirm(`Are you sure you want to create an account with the username "${username}"?`);
-    if (!confirmed) return;
+    const confirm = window.confirm(`Are you sure you want to create an account with the username "${username}"?`);
+    if (!confirm) return;
 
     const newUser = {
       username,
@@ -129,20 +111,19 @@
       recruitedHomies: [],
       homieBucks: 1000,
       missionsCompleted: [],
-      inventory: [],
+      avatar: "images/eHomies.png",
       settings: {
         sound: true,
-        theme: 'graffiti'
+        theme: "graffiti"
       }
     };
 
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
-    localStorage.setItem("currentUser", username);
-
+    addUser(newUser);
+    setCurrentUser(newUser);
     window.location.href = "index.html";
   });
 </script>
+
 
 
   <script>
