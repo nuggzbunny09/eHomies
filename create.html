@@ -129,16 +129,25 @@
 
 
   <script>
-    fetch('sidebar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('sidebar-placeholder').innerHTML = data;
-      })
-      .then(() => {
-        const script = document.createElement("script");
-        script.src = "auth.js";
-        document.body.appendChild(script);
-      });
-  </script>
+  fetch('sidebar.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('sidebar-placeholder').innerHTML = data;
+    })
+    .then(() => {
+      // Load userData.js first
+      const userScript = document.createElement("script");
+      userScript.src = "userData.js";
+      document.body.appendChild(userScript);
+
+      userScript.onload = () => {
+        // Then load auth.js
+        const authScript = document.createElement("script");
+        authScript.src = "auth.js";
+        document.body.appendChild(authScript);
+      };
+    });
+</script>
+
 </body>
 </html>
