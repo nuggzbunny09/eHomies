@@ -46,7 +46,7 @@ const tryInjectSidebarInfo = () => {
       <img src="images/eHomies.png" alt="eHomies Logo"
            class="bg-cyan-300 w-24 h-24 mx-auto mb-4 shadow-md object-contain border-3 border-cyan-600" />
       <a href="login.html"
-         class="block text-center text-cyan-300 hover:text-cyan-400 font-bold text2x1 text-underline">
+         class="block text-center text-cyan-300 hover:text-cyan-400 font-bold text2x1 underline">
         Login to eHomies
       </a>
     `;
