@@ -63,26 +63,27 @@
     </main>
   </div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+  <script src="userData.js"></script>
+<script>
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
 
-      const user = users.find(u => u.username === username && u.password === password);
+    const user = getUserByUsername(username);
 
-      if (user) {
-        localStorage.setItem("currentUser", username);
-        window.location.href = "index.html";
-      } else {
-        const error = document.getElementById("loginError");
-        error.textContent = "Invalid username or password.";
-        error.classList.remove("hidden");
-      }
-    });
-  </script>
+    if (user && user.password === password) {
+      setCurrentUser(user); // Save current user as JSON object
+      window.location.href = "index.html";
+    } else {
+      const error = document.getElementById("loginError");
+      error.textContent = "Invalid username or password.";
+      error.classList.remove("hidden");
+    }
+  });
+</script>
+
 
   <script>
     fetch('sidebar.html')
