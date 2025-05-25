@@ -73,47 +73,49 @@
       </div>
         <div id="homie-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 mx-auto mt-6"></div>
 
-     <script type="module">
-  import { getCurrentUser } from './userData.js';
-
-  function renderHomies() {
-    const user = getCurrentUser();
-    if (!user || !user.username) {
-      window.location.href = "login.html";
-      return;
-    }
-
-    const container = document.getElementById("homie-list");
-    container.innerHTML = "";
-
-    if (!user.recruitedHomies || user.recruitedHomies.length === 0) {
-      container.innerHTML = `<p class="text-center col-span-full text-lg text-gray-700">You haven't recruited any Homies yet!</p>`;
-      return;
-    }
-
-    user.recruitedHomies.forEach(homie => {
-      const xpPercent = (homie.xp / homie.xpToNext) * 100;
-
-      const homieCard = document.createElement("div");
-      homieCard.className = "bg-white rounded-2xl shadow-md p-4 text-center";
-
-      homieCard.innerHTML = `
-        <h2 class="text-xl font-bold text-red-800 mb-2">${homie.name}</h2>
-        <img src="${homie.image}" alt="${homie.name}" class="w-32 h-32 mx-auto mb-4 rounded-md" />
-        <p class="text-gray-700 mb-2">Level: ${homie.level}</p>
-        <p class="text-gray-600 mb-2">XP: ${homie.xp} / ${homie.xpToNext}</p>
-        <div class="w-full bg-gray-300 h-4 rounded-full mb-4">
-          <div class="bg-red-600 h-4 rounded-full" style="width: ${xpPercent}%"></div>
-        </div>
-        <p class="text-gray-500 text-sm">Equipped: ${homie.equippedItems.join(", ")}</p>
-      `;
-
-      container.appendChild(homieCard);
-    });
+     <script>
+function renderHomies() {
+  const user = getCurrentUser();
+  if (!user) {
+    console.warn("No current user found");
+    return;
   }
 
-  window.onload = renderHomies;
+  const container = document.getElementById("homie-list");
+  container.innerHTML = ""; // Clear any existing content
+
+  // Use a safe default if recruitedHomies is missing or not an array
+  const homies = Array.isArray(user.recruitedHomies) ? user.recruitedHomies : [];
+
+  if (homies.length === 0) {
+    container.innerHTML = `<p class="text-center col-span-full text-lg text-gray-700">You haven't recruited any Homies yet!</p>`;
+    return;
+  }
+
+  homies.forEach(homie => {
+    const xpPercent = (homie.xp / homie.xpToNext) * 100;
+
+    const homieCard = document.createElement("div");
+    homieCard.className = "bg-white rounded-2xl shadow-md p-4 text-center";
+
+    homieCard.innerHTML = `
+      <h2 class="text-xl font-bold text-red-800 mb-2">${homie.name}</h2>
+      <img src="${homie.image}" alt="${homie.name}" class="w-32 h-32 mx-auto mb-4 rounded-md" />
+      <p class="text-gray-700 mb-2">Level: ${homie.level}</p>
+      <p class="text-gray-600 mb-2">XP: ${homie.xp} / ${homie.xpToNext}</p>
+      <div class="w-full bg-gray-300 h-4 rounded-full mb-4">
+        <div class="bg-red-600 h-4 rounded-full" style="width: ${xpPercent}%"></div>
+      </div>
+      <p class="text-gray-500 text-sm">Equipped: ${homie.equippedItems.join(", ")}</p>
+    `;
+
+    container.appendChild(homieCard);
+  });
+}
+
+window.onload = renderHomies;
 </script>
+
 
 
 
