@@ -47,6 +47,8 @@ const tryInjectSidebarInfo = () => {
            class="bg-cyan-300 w-24 h-24 mx-auto shadow-md object-contain border-3 border-cyan-600"/>
       <h2 class="text-center mt-4 text-xl font-bold">${user.username}</h2>
       <p class="text-center text-sm">Level ${user.userLevel}</p>
+      <p class="text-center text-sm">hBucks: ${user.homieBucks}</p>
+      
     `;
   } else {
     container.innerHTML = `
